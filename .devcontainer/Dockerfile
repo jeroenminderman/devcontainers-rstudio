@@ -3,6 +3,12 @@
 ARG VARIANT="4.2"
 FROM ghcr.io/rocker-org/devcontainer/tidyverse:${VARIANT}
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libudunits2-dev \
+        libgdal-dev \
+        libgeos-dev \
+        libproj-dev
+    
 RUN install2.r --error --skipinstalled -n -1 \
         statip \
         patchwork \
